@@ -64,7 +64,7 @@
                                                 "additionalInformation": "https://otx.alienvault.com/browse/global?section=All&q=@{items('For_each')?['indicator']}&include_inactive=0",
                                                 "confidence": "@variables('confidence')",
                                                 "description": "OTX Threat Indicator - @{items('For_each')?['type']}",
-                                                "emailSenderAddress": "@{items('For_each')?['indicator']}",
+                                                "emailRecipient": "@{items('For_each')?['indicator']}",
                                                 "expirationDateTime": "@{addDays(utcNow(),7)}",
                                                 "externalId": "@{items('For_each')?['id']}",
                                                 "indicatorProvider": "AlienVault OTX",
