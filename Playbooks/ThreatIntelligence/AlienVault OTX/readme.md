@@ -15,8 +15,8 @@ This is a Logic App to import threat indicators from AlienVault into Azure Senti
 2.	Create an App  Registration in Azure AD: http://thewindowsupdate.com/2020/02/11/bring-your-threat-intelligence-to-azure-sentinel/
 4.	Set the run variables (Tennant ID, Client ID, App Secret, and OTX API Key).
 
-**Credits:***
+**Credits:**
 Andrew Blumhardt - https://azurecloudai.blog/2020/11/19/how-to-connect-alienvault-otx-to-azure-sentinel/ 
 
-**Change Log:***
+**Change Log:**
 23/12/2020 - Initial
