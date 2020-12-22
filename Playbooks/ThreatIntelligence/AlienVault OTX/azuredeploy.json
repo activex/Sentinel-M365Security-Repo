@@ -357,7 +357,7 @@
             "Get_AlienVault_OTX_TI": {
                 "inputs": {
                     "headers": {
-                        "X-OTX-API-KEY": "5923905bd2eeaf775e8b0faf494b8d1b237f72085fc2d6e206a7078741ec2364"
+                        "X-OTX-API-KEY": "XXXXXX"
                     },
                     "method": "GET",
                     "queries": {
