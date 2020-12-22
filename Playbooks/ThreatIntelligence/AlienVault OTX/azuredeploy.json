@@ -1,0 +1,506 @@
+{
+    "definition": {
+        "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+        "actions": {
+            "For_each": {
+                "actions": {
+                    "Switch": {
+                        "cases": {
+                            "Domain_Case": {
+                                "actions": {
+                                    "Sentinel_Post_TI_-_Domain": {
+                                        "inputs": {
+                                            "authentication": {
+                                                "audience": "https://graph.microsoft.com",
+                                                "clientId": "@variables('clientid')",
+                                                "secret": "@variables('appsecret')",
+                                                "tenant": "@variables('tennant')",
+                                                "type": "ActiveDirectoryOAuth"
+                                            },
+                                            "body": {
+                                                "action": "alert",
+                                                "activityGroupNames": [],
+                                                "additionalInformation": "https://otx.alienvault.com/browse/global?section=All&q=@{items('For_each')?['indicator']}&include_inactive=0",
+                                                "confidence": "@variables('confidence')",
+                                                "description": "OTX Threat Indicator - @{items('For_each')?['type']}",
+                                                "domainName": "@{items('For_each')?['indicator']}",
+                                                "expirationDateTime": "@{addDays(utcNow(),7)}",
+                                                "externalId": "@{items('For_each')?['id']}",
+                                                "indicatorProvider": "AlienVault OTX",
+                                                "killChain": [],
+                                                "malwareFamilyNames": [],
+                                                "severity": 0,
+                                                "tags": [],
+                                                "targetProduct": "Azure Sentinel",
+                                                "threatType": "WatchList",
+                                                "tlpLevel": "white"
+                                            },
+                                            "headers": {
+                                                "content-type": "application/json"
+                                            },
+                                            "method": "POST",
+                                            "uri": "https://graph.microsoft.com/beta/security/tiIndicators"
+                                        },
+                                        "runAfter": {},
+                                        "type": "Http"
+                                    }
+                                },
+                                "case": "domain"
+                            },
+                            "Email_Case": {
+                                "actions": {
+                                    "Sentinel_Post_TI_-_Email": {
+                                        "inputs": {
+                                            "authentication": {
+                                                "audience": "https://graph.microsoft.com",
+                                                "clientId": "@variables('clientid')",
+                                                "secret": "@variables('appsecret')",
+                                                "tenant": "@variables('tennant')",
+                                                "type": "ActiveDirectoryOAuth"
+                                            },
+                                            "body": {
+                                                "action": "alert",
+                                                "activityGroupNames": [],
+                                                "additionalInformation": "https://otx.alienvault.com/browse/global?section=All&q=@{items('For_each')?['indicator']}&include_inactive=0",
+                                                "confidence": "@variables('confidence')",
+                                                "description": "OTX Threat Indicator - @{items('For_each')?['type']}",
+                                                "emailSenderAddress": "@{items('For_each')?['indicator']}",
+                                                "expirationDateTime": "@{addDays(utcNow(),7)}",
+                                                "externalId": "@{items('For_each')?['id']}",
+                                                "indicatorProvider": "AlienVault OTX",
+                                                "killChain": [],
+                                                "malwareFamilyNames": [],
+                                                "severity": 0,
+                                                "tags": [],
+                                                "targetProduct": "Azure Sentinel",
+                                                "threatType": "WatchList",
+                                                "tlpLevel": "white"
+                                            },
+                                            "headers": {
+                                                "content-type": "application/json"
+                                            },
+                                            "method": "POST",
+                                            "uri": "https://graph.microsoft.com/beta/security/tiIndicators"
+                                        },
+                                        "runAfter": {},
+                                        "type": "Http"
+                                    }
+                                },
+                                "case": "Email"
+                            },
+                            "IPv4_Case": {
+                                "actions": {
+                                    "Sentinel_Post_TI_-_IPv4": {
+                                        "inputs": {
+                                            "authentication": {
+                                                "audience": "https://graph.microsoft.com",
+                                                "clientId": "@variables('clientid')",
+                                                "secret": "@variables('appsecret')",
+                                                "tenant": "@variables('tennant')",
+                                                "type": "ActiveDirectoryOAuth"
+                                            },
+                                            "body": {
+                                                "action": "alert",
+                                                "activityGroupNames": [],
+                                                "additionalInformation": "https://otx.alienvault.com/browse/global?section=All&q=@{items('For_each')?['indicator']}&include_inactive=0",
+                                                "confidence": "@variables('confidence')",
+                                                "description": "OTX Threat Indicator - @{items('For_each')?['type']}",
+                                                "expirationDateTime": "@{addDays(utcNow(),7)}",
+                                                "externalId": "@{items('For_each')?['id']}",
+                                                "indicatorProvider": "AlienVault OTX",
+                                                "killChain": [],
+                                                "malwareFamilyNames": [],
+                                                "networkDestinationIPv4": "@{items('For_each')?['indicator']}",
+                                                "severity": 0,
+                                                "tags": [],
+                                                "targetProduct": "Azure Sentinel",
+                                                "threatType": "WatchList",
+                                                "tlpLevel": "white"
+                                            },
+                                            "headers": {
+                                                "content-type": "application/json"
+                                            },
+                                            "method": "POST",
+                                            "uri": "https://graph.microsoft.com/beta/security/tiIndicators"
+                                        },
+                                        "runAfter": {},
+                                        "type": "Http"
+                                    }
+                                },
+                                "case": "IPv4"
+                            },
+                            "MD5_Case": {
+                                "actions": {
+                                    "Sentinel_Post_TI_-_MD5": {
+                                        "inputs": {
+                                            "authentication": {
+                                                "audience": "https://graph.microsoft.com",
+                                                "clientId": "@variables('clientid')",
+                                                "secret": "@variables('appsecret')",
+                                                "tenant": "@variables('tennant')",
+                                                "type": "ActiveDirectoryOAuth"
+                                            },
+                                            "body": {
+                                                "action": "alert",
+                                                "activityGroupNames": [],
+                                                "additionalInformation": "https://otx.alienvault.com/browse/global?section=All&q=@{items('For_each')?['indicator']}&include_inactive=0",
+                                                "confidence": "@variables('confidence')",
+                                                "description": "OTX Threat Indicator - @{items('For_each')?['type']}",
+                                                "expirationDateTime": "@{addDays(utcNow(),7)}",
+                                                "externalId": "@{items('For_each')?['id']}",
+                                                "fileHashType": "md5",
+                                                "fileHashValue": "@{items('For_each')?['indicator']}",
+                                                "indicatorProvider": "AlienVault OTX",
+                                                "killChain": [],
+                                                "malwareFamilyNames": [],
+                                                "severity": 0,
+                                                "tags": [],
+                                                "targetProduct": "Azure Sentinel",
+                                                "threatType": "WatchList",
+                                                "tlpLevel": "white"
+                                            },
+                                            "headers": {
+                                                "content-type": "application/json"
+                                            },
+                                            "method": "POST",
+                                            "uri": "https://graph.microsoft.com/beta/security/tiIndicators"
+                                        },
+                                        "runAfter": {},
+                                        "type": "Http"
+                                    }
+                                },
+                                "case": "FileHash-MD5"
+                            },
+                            "SHA1_Case": {
+                                "actions": {
+                                    "HTTP": {
+                                        "inputs": {
+                                            "authentication": {
+                                                "audience": "https://graph.microsoft.com",
+                                                "clientId": "@variables('clientid')",
+                                                "secret": "@variables('appsecret')",
+                                                "tenant": "@variables('tennant')",
+                                                "type": "ActiveDirectoryOAuth"
+                                            },
+                                            "body": {
+                                                "action": "alert",
+                                                "activityGroupNames": [],
+                                                "additionalInformation": "https://otx.alienvault.com/browse/global?section=All&q=@{items('For_each')?['indicator']}&include_inactive=0",
+                                                "confidence": "@variables('confidence')",
+                                                "description": "OTX Threat Indicator - @{items('For_each')?['type']}",
+                                                "expirationDateTime": "@{addDays(utcNow(),7)}",
+                                                "externalId": "@{items('For_each')?['id']}",
+                                                "fileHashType": "sha1",
+                                                "fileHashValue": "@{items('For_each')?['indicator']}",
+                                                "indicatorProvider": "AlienVault OTX",
+                                                "killChain": [],
+                                                "malwareFamilyNames": [],
+                                                "severity": 0,
+                                                "tags": [],
+                                                "targetProduct": "Azure Sentinel",
+                                                "threatType": "WatchList",
+                                                "tlpLevel": "white"
+                                            },
+                                            "headers": {
+                                                "content-type": "application/json"
+                                            },
+                                            "method": "POST",
+                                            "uri": "https://graph.microsoft.com/beta/security/tiIndicators"
+                                        },
+                                        "runAfter": {},
+                                        "type": "Http"
+                                    }
+                                },
+                                "case": "FileHash-SHA1"
+                            },
+                            "SHA256_Case": {
+                                "actions": {
+                                    "HTTP_2": {
+                                        "inputs": {
+                                            "authentication": {
+                                                "audience": "https://graph.microsoft.com",
+                                                "clientId": "@variables('clientid')",
+                                                "secret": "@variables('appsecret')",
+                                                "tenant": "@variables('tennant')",
+                                                "type": "ActiveDirectoryOAuth"
+                                            },
+                                            "body": {
+                                                "action": "alert",
+                                                "activityGroupNames": [],
+                                                "additionalInformation": "https://otx.alienvault.com/browse/global?section=All&q=@{items('For_each')?['indicator']}&include_inactive=0",
+                                                "confidence": "@variables('confidence')",
+                                                "description": "OTX Threat Indicator - @{items('For_each')?['type']}",
+                                                "expirationDateTime": "@{addDays(utcNow(),7)}",
+                                                "externalId": "@{items('For_each')?['id']}",
+                                                "fileHashType": "sha256",
+                                                "fileHashValue": "@{items('For_each')?['indicator']}",
+                                                "indicatorProvider": "AlienVault OTX",
+                                                "killChain": [],
+                                                "malwareFamilyNames": [],
+                                                "severity": 0,
+                                                "tags": [],
+                                                "targetProduct": "Azure Sentinel",
+                                                "threatType": "WatchList",
+                                                "tlpLevel": "white"
+                                            },
+                                            "headers": {
+                                                "content-type": "application/json"
+                                            },
+                                            "method": "POST",
+                                            "uri": "https://graph.microsoft.com/beta/security/tiIndicators"
+                                        },
+                                        "runAfter": {},
+                                        "type": "Http"
+                                    }
+                                },
+                                "case": "FileHash-SHA256"
+                            },
+                            "URI_Case": {
+                                "actions": {
+                                    "Sentinel_Post_TI_-_URI": {
+                                        "inputs": {
+                                            "authentication": {
+                                                "audience": "https://graph.microsoft.com",
+                                                "clientId": "@variables('clientid')",
+                                                "secret": "@variables('appsecret')",
+                                                "tenant": "@variables('tennant')",
+                                                "type": "ActiveDirectoryOAuth"
+                                            },
+                                            "body": {
+                                                "action": "alert",
+                                                "activityGroupNames": [],
+                                                "additionalInformation": "https://otx.alienvault.com/browse/global?section=All&q=@{items('For_each')?['indicator']}&include_inactive=0",
+                                                "confidence": "@variables('confidence')",
+                                                "description": "OTX Threat Indicator - @{items('For_each')?['type']}",
+                                                "expirationDateTime": "@{addDays(utcNow(),7)}",
+                                                "externalId": "@{items('For_each')?['id']}",
+                                                "indicatorProvider": "AlienVault OTX",
+                                                "killChain": [],
+                                                "malwareFamilyNames": [],
+                                                "severity": 0,
+                                                "tags": [],
+                                                "targetProduct": "Azure Sentinel",
+                                                "threatType": "WatchList",
+                                                "tlpLevel": "white",
+                                                "url": "@{items('For_each')?['indicator']}"
+                                            },
+                                            "headers": {
+                                                "content-type": "application/json"
+                                            },
+                                            "method": "POST",
+                                            "uri": "https://graph.microsoft.com/beta/security/tiIndicators"
+                                        },
+                                        "runAfter": {},
+                                        "type": "Http"
+                                    }
+                                },
+                                "case": "URI"
+                            },
+                            "URL_Case": {
+                                "actions": {
+                                    "Sentinel_Post_TI_-_URL": {
+                                        "inputs": {
+                                            "authentication": {
+                                                "audience": "https://graph.microsoft.com",
+                                                "clientId": "@variables('clientid')",
+                                                "secret": "@variables('appsecret')",
+                                                "tenant": "@variables('tennant')",
+                                                "type": "ActiveDirectoryOAuth"
+                                            },
+                                            "body": {
+                                                "action": "alert",
+                                                "activityGroupNames": [],
+                                                "additionalInformation": "https://otx.alienvault.com/browse/global?section=All&q=@{items('For_each')?['indicator']}&include_inactive=0",
+                                                "confidence": "@variables('confidence')",
+                                                "description": "OTX Threat Indicator - @{items('For_each')?['type']}",
+                                                "expirationDateTime": "@{addDays(utcNow(),7)}",
+                                                "externalId": "@{items('For_each')?['id']}",
+                                                "indicatorProvider": "AlienVault OTX",
+                                                "killChain": [],
+                                                "malwareFamilyNames": [],
+                                                "severity": 0,
+                                                "tags": [],
+                                                "targetProduct": "Azure Sentinel",
+                                                "threatType": "WatchList",
+                                                "tlpLevel": "white",
+                                                "url": "@{items('For_each')?['indicator']}"
+                                            },
+                                            "headers": {
+                                                "content-type": "application/json"
+                                            },
+                                            "method": "POST",
+                                            "uri": "https://graph.microsoft.com/beta/security/tiIndicators"
+                                        },
+                                        "runAfter": {},
+                                        "type": "Http"
+                                    }
+                                },
+                                "case": "URL"
+                            }
+                        },
+                        "default": {
+                            "actions": {}
+                        },
+                        "expression": "@items('For_each')?['type']",
+                        "runAfter": {},
+                        "type": "Switch"
+                    }
+                },
+                "foreach": "@body('Parse_JSON')?['results']",
+                "runAfter": {
+                    "Parse_JSON": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Foreach"
+            },
+            "Get_AlienVault_OTX_TI": {
+                "inputs": {
+                    "headers": {
+                        "X-OTX-API-KEY": "5923905bd2eeaf775e8b0faf494b8d1b237f72085fc2d6e206a7078741ec2364"
+                    },
+                    "method": "GET",
+                    "queries": {
+                        "modified_since": "@{addDays(utcNow(),-2)}",
+                        "types": "domain,email,FileHash-MD5,FileHash-SHA1,FileHash-SHA256,IPv4,URL,URI"
+                    },
+                    "uri": "https://otx.alienvault.com/api/v1/indicators/export"
+                },
+                "runAfter": {
+                    "Set_App_Secret": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Http"
+            },
+            "Parse_JSON": {
+                "inputs": {
+                    "content": "@body('Get_AlienVault_OTX_TI')",
+                    "schema": {
+                        "properties": {
+                            "count": {
+                                "type": "integer"
+                            },
+                            "next": {},
+                            "previous": {},
+                            "results": {
+                                "items": {
+                                    "properties": {
+                                        "content": {
+                                            "type": "string"
+                                        },
+                                        "description": {},
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "indicator": {
+                                            "type": "string"
+                                        },
+                                        "title": {},
+                                        "type": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "id",
+                                        "indicator",
+                                        "type",
+                                        "title",
+                                        "description",
+                                        "content"
+                                    ],
+                                    "type": "object"
+                                },
+                                "type": "array"
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "runAfter": {
+                    "Get_AlienVault_OTX_TI": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "ParseJson"
+            },
+            "Set_App_Client_ID": {
+                "inputs": {
+                    "variables": [
+                        {
+                            "name": "clientid",
+                            "type": "string",
+                            "value": "XXXXX"
+                        }
+                    ]
+                },
+                "runAfter": {
+                    "Set_Tennant_ID": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "InitializeVariable"
+            },
+            "Set_App_Secret": {
+                "inputs": {
+                    "variables": [
+                        {
+                            "name": "appsecret",
+                            "type": "string",
+                            "value": "XXXXX"
+                        }
+                    ]
+                },
+                "runAfter": {
+                    "Set_App_Client_ID": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "InitializeVariable"
+            },
+            "Set_OTX_Confidence": {
+                "inputs": {
+                    "variables": [
+                        {
+                            "name": "confidence",
+                            "type": "integer",
+                            "value": 25
+                        }
+                    ]
+                },
+                "runAfter": {},
+                "type": "InitializeVariable"
+            },
+            "Set_Tennant_ID": {
+                "inputs": {
+                    "variables": [
+                        {
+                            "name": "tennant",
+                            "type": "string",
+                            "value": "XXXXX"
+                        }
+                    ]
+                },
+                "runAfter": {
+                    "Set_OTX_Confidence": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "InitializeVariable"
+            }
+        },
+        "contentVersion": "1.0.0.0",
+        "outputs": {},
+        "parameters": {},
+        "triggers": {
+            "Recurrence": {
+                "recurrence": {
+                    "frequency": "Day",
+                    "interval": 1
+                },
+                "type": "Recurrence"
+            }
+        }
+    },
+    "parameters": {}
+}
